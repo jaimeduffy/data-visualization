@@ -1,49 +1,34 @@
-# 📊 Data Visualization - PEC2
+# Visualización de Datos - PEC 2
 
-This project is a **static web page** developed as part of the *Data Visualization* course in the **Master's in Data Science at Universitat Oberta de Catalunya (UOC)**.
+Página web estática desarrollada como parte de la asignatura de *Visualización de Datos* del **Máster en Ciencia de Datos de la UOC**.
 
-🔗 You can visit the visualization here:  
-👉 https://TU-USUARIO.github.io/data-visualization/
+🔗 Visualización publicada en: https://jaimeduffy.github.io/data-visualization/
 
-## About
+## Técnicas exploradas
 
-Three data visualization techniques explored:
-1. **Bubble Chart** — Wealth vs. Health worldwide (Gapminder, 142 countries, 2007)
-2. **Waffle Chart** — Spain's electricity generation mix 2023 (REE)
-3. **Marimekko Chart** — Electricity generation by source in EU countries 2023 (Eurostat)
+1. **Gráfico de Burbujas (Bubble Chart)** — Riqueza vs. Salud en el mundo (Gapminder, 142 países, 2007)
+2. **Gráfico de Gofre (Waffle Chart)** — Mix de generación eléctrica en España 2023 (REE)
+3. **Gráfico de Marimekko (Marimekko Chart)** — Generación eléctrica por fuente en países de la UE 2023 (Eurostat)
 
-All visualizations were created with Python using `matplotlib` and `pywaffle`.
+## Fuentes de datos
 
-## Data Sources
+| Gráfico | Fuente | Enlace |
+|---------|--------|--------|
+| Bubble Chart | Gapminder.org (CC-BY) | https://www.gapminder.org/data/ |
+| Waffle Chart | Red Eléctrica de España (REE) | https://www.ree.es/es/datos/publicaciones/series-estadisticas-nacionales |
+| Marimekko Chart | Eurostat (nrg_ind_peh) | https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_and_heat_statistics |
 
-| Chart | Source | URL |
-|-------|--------|-----|
-| Bubble | Gapminder.org (CC-BY) | https://www.gapminder.org/data/ |
-| Waffle | Red Eléctrica de España (REE) | https://www.ree.es/es/datos/publicaciones/series-estadisticas-nacionales |
-| Marimekko | Eurostat (nrg_ind_peh) | https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_and_heat_statistics |
-
-## Project Structure
-
-```
-data-visualization/
-├── data/                                       # Source datasets (CSV)
-│   ├── generacion_electrica_espana_2023.csv
-│   └── generacion_electrica_eu_2023.csv
-├── images/                                     # Generated chart images (PNG)
-│   ├── bubble_chart.png
-│   ├── waffle_chart.png
-│   └── marimekko_chart.png
-├── src/                                        # Source code
-│   └── plot_generation.ipynb
-├── index.html                                  # GitHub Pages website
-└── README.md
-```
-
-## How to regenerate the charts
+## Regenerar los gráficos
 
 ```bash
 pip install matplotlib pandas pywaffle gapminder
 cd src
 jupyter notebook plot_generation.ipynb
-# Run all cells — images are saved to ../images/
 ```
+
+Ejecutar todas las celdas genera las imágenes en `images/`.
+
+## Herramientas utilizadas
+
+- Python (matplotlib, pywaffle)
+- Paleta de colores: [Coolors](https://coolors.co/264653-2a9d8f-e9c46a-f4a261-e76f51)
