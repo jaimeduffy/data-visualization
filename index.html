@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Visualización de Datos PEC 2</title>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; max-width: 900px; margin: 0 auto; padding: 20px; }
+        body { font-family: Arial, sans-serif; text-align: center; max-width: 1100px; margin: 0 auto; padding: 20px; }
         img { max-width: 100%; height: auto; margin: 20px 0; }
         p { text-align: left; line-height: 1.6; }
+        ul { text-align: left; line-height: 1.6; }
     </style>
 </head>
 <body>
@@ -15,74 +16,150 @@
     <h1>Jaime Duffy Panés</h1>
     <h2>Visualización de Datos PEC 2</h2>
 
-    <p>En esta práctica saldremos de nuestra zona de confort y descubriremos 3 técnicas de visualización nuevas.
+    <p>En esta práctica descubriremos 3 técnicas de visualización nuevas.
     En mi caso, las visualizaciones asignadas son las siguientes: <strong>Gráfico de Burbujas (Bubble Chart)</strong>,
     <strong>Gráfico de Gofre (Waffle Chart)</strong> y <strong>Gráfico de Marimekko (Marimekko Chart)</strong>.</p>
 
     <p>He creado todas las visualizaciones en Python usando las librerías <em>matplotlib</em> y <em>pywaffle</em>.
-    Las paletas de colores empleadas han sido obtenidas de Coolors:
-    <a href="https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25" target="_blank" rel="noopener noreferrer">Paleta principal</a>.</p>
+    La paleta de colores empleada ha sido obtenida de
+    <a href="https://coolors.co/palette/606c38-283618-fefae0-dda15e-bc6c25" target="_blank" rel="noopener noreferrer">Coolors — Olive Garden Feast</a>.</p>
 
     <p>Las fuentes de datos consultadas han sido dos:
     un dataset de <a href="https://www.kaggle.com/datasets/shreyasur965/hgfgfdgdsa" target="_blank" rel="noopener noreferrer">Kaggle — Global Energy Mix & Generation Sources</a> sobre generación eléctrica mundial por fuente (usado tanto para el bubble chart como para el waffle chart),
     y un dataset de ventas de una <a href="https://www.kaggle.com/datasets/vinothkannaece/sales-dataset" target="_blank" rel="noopener noreferrer">tienda de Kaggle</a>.</p>
 
+    <!-- ============================================================ -->
+    <!-- BUBBLE CHART -->
+    <!-- ============================================================ -->
     <h2>Gráfico de Burbujas (Bubble Chart)</h2>
 
+    <h3>Definición y descripción</h3>
     <p>Un gráfico de burbujas es un gráfico de varias variables que es un cruce entre un diagrama de dispersión y un
     gráfico de área proporcional. Al igual que un diagrama de dispersión, utiliza un sistema de coordenadas cartesianas
     donde los ejes X e Y son variables separadas. Sin embargo, a cada punto se le asigna una etiqueta o categoría, y
     una tercera variable se representa mediante el área de su círculo. Los colores también se pueden utilizar para
     distinguir entre categorías o para representar una variable adicional.</p>
 
-    <p>Origen: Sus raíces se remontan al diagrama de dispersión popularizado por Francis Galton (década de 1870).
+    <h3>Origen</h3>
+    <p>Sus raíces se remontan al diagrama de dispersión popularizado por Francis Galton (década de 1870).
     El bubble chart se consolidó como tipo de gráfico independiente gracias a Hans Rosling, médico y estadístico sueco,
     quien en su charla TED de 2006 utilizó burbujas animadas para mostrar tendencias de desarrollo global con el
     software Trendalyzer, base de la Fundación Gapminder.</p>
 
-    <p>Los gráficos de burbujas se utilizan para comparar y mostrar relaciones entre círculos categorizados,
-    mediante el uso de posicionamiento y proporciones. Demasiadas burbujas pueden hacer que el gráfico sea difícil
-    de leer, por lo que tienen una capacidad limitada de datos. Esto puede remediarse con interactividad: hacer clic
-    o pasar sobre burbujas para mostrar información oculta, o filtrar categorías. Los tamaños de los círculos deben
-    dibujarse basándose en el área del círculo, no en su radio o diámetro, para evitar interpretaciones erróneas.</p>
+    <h3>Tipo de datos y limitaciones</h3>
+    <ul>
+        <li><strong>Datos requeridos:</strong> Al menos 3 variables cuantitativas (dos para posición, una para tamaño). Opcionalmente, una variable categórica para el color.</li>
+        <li><strong>Limitaciones:</strong> Demasiadas burbujas dificultan la lectura. Los tamaños deben basarse en el área, no en el radio o diámetro, para evitar interpretaciones erróneas. No admite valores negativos en la variable de tamaño.</li>
+    </ul>
 
+    <h3>Ejemplos típicos de aplicación</h3>
+    <ul>
+        <li>Comparación de países: PIB per cápita vs. esperanza de vida vs. población (ejemplo clásico de Gapminder).</li>
+        <li>Análisis de carteras de proyectos: coste vs. beneficio vs. nivel de riesgo.</li>
+        <li>Datos financieros: ventas vs. beneficio vs. cuota de mercado.</li>
+    </ul>
+
+    <h3>Visualización</h3>
     <img src="images/bubble_chart.png" alt="Bubble Chart">
 
+    <h3>Comentario</h3>
+    <p>Este gráfico muestra la generación eléctrica de las 6 grandes regiones del mundo en 2023. El eje X representa
+    la generación total en TWh, el eje Y el porcentaje de renovables en su mix, y el tamaño de cada burbuja la
+    generación a partir de carbón. Se observa que Asia domina la generación mundial con más de 15.000 TWh, pero con
+    una enorme dependencia del carbón (burbuja muy grande) y un bajo porcentaje de renovables (26,6%).
+    En contraste, Latinoamérica lidera en renovables (61,9%) con una burbuja de carbón casi invisible.
+    Europa y Norteamérica generan cantidades similares, pero Europa tiene mayor porcentaje renovable.
+    El objetivo comunicativo es mostrar de un vistazo las diferencias en la transición energética entre regiones.
+    La técnica de bubble chart es idónea aquí porque permite comparar tres variables simultáneamente con solo 6 puntos.</p>
+
+    <!-- ============================================================ -->
+    <!-- WAFFLE CHART -->
+    <!-- ============================================================ -->
     <h2>Gráfico de Gofre (Waffle Chart)</h2>
 
+    <h3>Definición y descripción</h3>
     <p>Un gráfico de gofre (waffle chart) muestra el progreso hacia un objetivo o un porcentaje de completitud.
     Consiste en una cuadrícula de celdas pequeñas del mismo tamaño, donde las celdas coloreadas representan los datos.
     Un gráfico puede contener una o varias categorías. Se pueden colocar múltiples waffle charts juntos para
     mostrar una comparación entre diferentes conjuntos de datos.</p>
 
-    <p>Origen: Técnica moderna sin un autor único identificado. Emergió de la comunidad de visualización de datos como
+    <h3>Origen</h3>
+    <p>Técnica moderna sin un autor único identificado. Emergió de la comunidad de visualización de datos como
     alternativa a los gráficos de sectores (pie charts), cuyas limitaciones perceptivas están ampliamente documentadas.
     También se conoce como <em>square pie chart</em> o <em>percentage grid</em>.</p>
 
-    <p>Trabaja con datos categóricos que representan partes de un todo. Para emular la vista porcentual de un pie chart
-    se usa una cuadrícula de 10×10 donde cada cuadrado representa el 1% del total. El número ideal de categorías es
-    reducido (2 a 6). Se complica con muchas categorías y pierde precisión con valores que no se ajustan a celdas enteras.</p>
+    <h3>Tipo de datos y limitaciones</h3>
+    <ul>
+        <li><strong>Datos requeridos:</strong> Datos categóricos que representan partes de un todo (porcentajes que sumen 100%).</li>
+        <li><strong>Cuadrícula:</strong> Típicamente 10×10 donde cada cuadrado representa el 1% del total.</li>
+        <li><strong>Limitaciones:</strong> El número ideal de categorías es reducido (2 a 6). Se complica con muchas categorías y pierde precisión con valores que no se ajustan a celdas enteras.</li>
+    </ul>
 
+    <h3>Ejemplos típicos de aplicación</h3>
+    <ul>
+        <li>Composición de presupuestos: desglose de gasto público por sector.</li>
+        <li>Progreso hacia objetivos: porcentaje de meta alcanzada en KPIs.</li>
+        <li>Composición demográfica: distribución por edad, género o nacionalidad.</li>
+    </ul>
+
+    <h3>Visualización</h3>
     <img src="images/waffle_chart.png" alt="Waffle Chart">
 
+    <h3>Comentario</h3>
+    <p>Este gráfico muestra la composición del mix de generación eléctrica de España en 2023. Cada cuadrado
+    representa el 1% de la electricidad total generada. Se observa que la eólica (24%) y el gas (24%) son las
+    fuentes dominantes, seguidas de la nuclear (21%) y la solar (17%). El carbón apenas representa un 1%.
+    El waffle chart es ideal aquí porque permite ver de forma inmediata e intuitiva las proporciones: basta contar
+    cuadrados para verificar cada porcentaje. A diferencia de un pie chart, donde sería difícil distinguir si la
+    eólica supera al gas, aquí la comparación es directa. El objetivo comunicativo es mostrar la diversificación
+    del mix energético español y el peso creciente de las renovables.</p>
+
+    <!-- ============================================================ -->
+    <!-- MARIMEKKO CHART -->
+    <!-- ============================================================ -->
     <h2>Gráfico de Marimekko (Marimekko Chart)</h2>
 
+    <h3>Definición y descripción</h3>
     <p>Un gráfico de Marimekko (también llamado Mekko chart) es un gráfico apilado bidimensional. Además de las alturas
     variables de los segmentos de un gráfico apilado convencional, un Marimekko también tiene anchos de columna variables.
     Los anchos de las columnas se escalan de modo que el ancho total coincida con el ancho deseado del gráfico.
     Se utiliza para comparaciones y para mostrar la relación de las partes con el todo.</p>
 
-    <p>Origen: Su nombre proviene de la empresa finlandesa de diseño Marimekko, famosa por sus estampados geométricos
+    <h3>Origen</h3>
+    <p>Su nombre proviene de la empresa finlandesa de diseño Marimekko, famosa por sus estampados geométricos
     coloridos. Desde el punto de vista estadístico, su forma académica (el mosaic plot) se desarrolló en el ámbito del
     análisis de datos categóricos. Su popularización en consultoría estratégica y análisis de cuota de mercado se produjo
     a partir de los años 90.</p>
 
-    <p>Se necesitan dos variables categóricas y una numérica. Los valores deben ser positivos. El número óptimo de
-    categorías es reducido (3 a 7) con pocas subcategorías (2 a 5). La percepción humana de áreas es limitada, lo que
-    dificulta comparar rectángulos con distintas proporciones, y los segmentos no comparten línea base común.</p>
+    <h3>Tipo de datos y limitaciones</h3>
+    <ul>
+        <li><strong>Datos requeridos:</strong> Dos variables categóricas y una variable numérica positiva.</li>
+        <li><strong>Estructura:</strong> Los datos deben poder organizarse en una tabla cruzada (categoría × subcategoría).</li>
+        <li><strong>Limitaciones:</strong> El número óptimo de categorías es de 3 a 7 con 2 a 5 subcategorías. La percepción humana de áreas es limitada, lo que dificulta comparar rectángulos con distintas proporciones. Los segmentos no comparten línea base común.</li>
+    </ul>
 
+    <h3>Ejemplos típicos de aplicación</h3>
+    <ul>
+        <li>Cuota de mercado: ventas por región desglosadas por línea de producto.</li>
+        <li>Presupuestos departamentales: gasto por departamento dividido por tipo de actividad.</li>
+        <li>Análisis de recursos humanos: empleados por división y nivel de experiencia.</li>
+    </ul>
+
+    <h3>Visualización</h3>
     <img src="images/marimekko_chart.png" alt="Marimekko Chart">
 
+    <h3>Comentario</h3>
+    <p>Este gráfico muestra las ventas de una tienda en EE.UU. durante 2023, desglosadas por región (anchura de cada
+    columna) y categoría de producto (altura de cada segmento). La anchura revela que North (27,3%) es la región con
+    más ventas, mientras que South (23,0%) es la menor. La composición interna muestra que las 4 categorías
+    (Electronics, Furniture, Food, Clothing) están bastante equilibradas en todas las regiones, lo que indica una
+    distribución de ventas uniforme. El Marimekko es ideal aquí porque permite captar de un vistazo tanto el peso
+    relativo de cada región como su estructura interna, algo que requeriría múltiples gráficos de barras por separado.
+    El objetivo comunicativo es comparar simultáneamente el volumen y la composición de ventas entre regiones.</p>
+
+    <!-- ============================================================ -->
+    <!-- BIBLIOGRAPHY -->
+    <!-- ============================================================ -->
     <h2>Bibliografía</h2>
     <p><a href="https://datavizcatalogue.com/ES/metodos/grafico_de_burbujas.html" target="_blank" rel="noopener noreferrer">Catálogo de Visualización de Datos — Gráfico de Burbujas</a></p>
     <p><a href="https://datavizproject.com/data-type/percentage-grid/" target="_blank" rel="noopener noreferrer">DataViz Project — Waffle Chart (Percentage Grid)</a></p>
