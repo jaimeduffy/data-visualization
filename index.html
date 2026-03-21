@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualización de Datos PEC 2</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; max-width: 900px; margin: 0 auto; padding: 20px; }
+        img { max-width: 80%; height: auto; margin: 20px 0; }
+        p { text-align: left; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <h1>Jaime Duffy Panés</h1>
+    <h2>Visualización de Datos PEC 2</h2>
+
+    <p>En esta práctica saldremos de nuestra zona de confort y descubriremos 3 técnicas de visualización nuevas.
+    En nuestro caso nos ha tocado familiarizarnos con <strong>Gráfico de Burbujas (Bubble Chart)</strong>,
+    <strong>Gráfico de Gofre (Waffle Chart)</strong> y <strong>Gráfico de Marimekko (Marimekko Chart)</strong>.</p>
+
+    <p>Hemos creado todas nuestras visualizaciones en Python usando las librerías <em>matplotlib</em> y <em>pywaffle</em>.
+    La paleta de colores empleada ha sido obtenida de <a href="https://coolors.co/264653-2a9d8f-e9c46a-f4a261-e76f51" target="_blank" rel="noopener noreferrer">Coolors</a>.</p>
+
+    <p>Las fuentes de datos consultadas han sido tres:
+    el paquete <a href="https://www.gapminder.org/data/" target="_blank" rel="noopener noreferrer">Gapminder</a> (datos de desarrollo global, licencia CC-BY),
+    datos de generación eléctrica de <a href="https://www.ree.es/es/datos/publicaciones/series-estadisticas-nacionales" target="_blank" rel="noopener noreferrer">Red Eléctrica de España (REE)</a>,
+    y datos de <a href="https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Electricity_and_heat_statistics" target="_blank" rel="noopener noreferrer">Eurostat</a> sobre generación eléctrica en la UE.</p>
+
+    <h2>Gráfico de Burbujas (Bubble Chart)</h2>
+
+    <p>El gráfico de burbujas es una extensión del diagrama de dispersión que permite representar tres o más dimensiones
+    de datos. Cada observación se muestra como un círculo cuya posición codifica dos variables numéricas y cuyo tamaño
+    (área) representa una tercera variable. El color puede añadir una cuarta dimensión.</p>
+
+    <p>Origen: Popularizado por Hans Rosling, médico y estadístico sueco, en su charla TED de 2006 utilizando el software
+    Trendalyzer desarrollado por su hijo Ola Rosling para la Fundación Gapminder. Sus raíces se remontan al diagrama de
+    dispersión de Francis Galton (década de 1870).</p>
+
+    <p>Se necesitan al menos 3 variables numéricas. Se recomienda no superar las 15-20 burbujas y usar escala logarítmica
+    cuando los datos abarcan varios órdenes de magnitud. No admite valores negativos en la variable de tamaño.
+    Nuestra percepción del área es imprecisa, por lo que comparar burbujas de tamaño similar resulta difícil.</p>
+
+    <img src="images/bubble_chart.png" alt="Bubble Chart">
+
+    <h2>Gráfico de Gofre (Waffle Chart)</h2>
+
+    <p>El gráfico de gofre muestra proporciones mediante una cuadrícula de 10×10 celdas donde cada celda representa
+    el 1% del total. Las celdas se colorean según las categorías que componen el todo. Es una alternativa al gráfico
+    de sectores (pie chart) más fácil de interpretar, ya que nuestro cerebro compara áreas rectangulares mejor que ángulos.</p>
+
+    <p>Origen: Técnica moderna sin un autor único identificado. Emergió de la comunidad de visualización de datos como
+    alternativa a los pie charts. También se conoce como <em>square pie chart</em>. Su popularización se aceleró
+    con herramientas como R (paquete waffle) y Python (pywaffle).</p>
+
+    <p>Trabaja con datos categóricos que representan partes de un todo (porcentajes que sumen 100%). El número ideal de
+    categorías es de 2 a 6. Se complica con muchas categorías y pierde precisión con valores decimales que no se
+    ajustan a celdas enteras.</p>
+
+    <img src="images/waffle_chart.png" alt="Waffle Chart">
+
+    <h2>Gráfico de Marimekko (Marimekko Chart)</h2>
+
+    <p>El gráfico de Marimekko (también llamado Mekko chart o mosaic plot) es un gráfico de barras apiladas donde
+    tanto la altura como la anchura de las barras varían. La anchura de cada columna es proporcional al valor total
+    de esa categoría y la altura de cada segmento representa la proporción de cada subcategoría dentro de ella.
+    Permite detectar relaciones entre categorías y subcategorías en un único gráfico.</p>
+
+    <p>Origen: Su nombre proviene de la empresa finlandesa de diseño Marimekko, famosa por sus estampados geométricos
+    coloridos que fueron favoritos de Jackie Kennedy en los años 60. Desde el punto de vista estadístico, el mosaic plot
+    se desarrolló en el ámbito del análisis de datos categóricos. Su popularización en consultoría estratégica y análisis
+    de cuota de mercado se produjo a partir de los años 90.</p>
+
+    <p>Se necesitan dos variables categóricas y una numérica. Los valores deben ser positivos. El número óptimo de
+    categorías es de 3 a 7 y de subcategorías de 2 a 5. La percepción humana de áreas es limitada, dificultando comparar
+    rectángulos con distintas proporciones, y los segmentos no comparten línea base común.</p>
+
+    <img src="images/marimekko_chart.png" alt="Marimekko Chart">
+
+    <h2>Bibliografía</h2>
+    <p><a href="https://www.data-to-viz.com/graph/bubble.html" target="_blank" rel="noopener noreferrer">Data to Viz — Bubble Plot</a></p>
+    <p><a href="https://datavizproject.com/data-type/bubble-chart/" target="_blank" rel="noopener noreferrer">DataViz Project — Bubble Chart</a></p>
+    <p><a href="https://datavizcatalogue.com/methods/bubble_chart.html" target="_blank" rel="noopener noreferrer">Catálogo de Visualización de Datos — Bubble Chart</a></p>
+    <p><a href="https://datavizproject.com/data-type/percentage-grid/" target="_blank" rel="noopener noreferrer">DataViz Project — Waffle Chart</a></p>
+    <p><a href="https://baryon.be/uncommon-chart-types-waffle-charts/" target="_blank" rel="noopener noreferrer">Baryon — Waffle Charts</a></p>
+    <p><a href="https://datavizcatalogue.com/methods/marimekko_chart.html" target="_blank" rel="noopener noreferrer">Catálogo de Visualización de Datos — Marimekko Chart</a></p>
+    <p><a href="https://inforiver.com/insights/a-guide-to-marimekko-charts/" target="_blank" rel="noopener noreferrer">Inforiver — A Guide to Marimekko Charts</a></p>
+    <p><a href="https://en.wikipedia.org/wiki/Bubble_chart" target="_blank" rel="noopener noreferrer">Wikipedia — Bubble Chart</a></p>
+    <p><a href="https://en.wikipedia.org/wiki/Mosaic_plot" target="_blank" rel="noopener noreferrer">Wikipedia — Mosaic Plot</a></p>
+    <p><a href="https://www.gapminder.org/" target="_blank" rel="noopener noreferrer">Gapminder Foundation</a></p>
+
+</body>
+</html>
